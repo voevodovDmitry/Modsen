@@ -7,8 +7,14 @@ import java.io.PrintWriter;
 
 public class Servlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter printWriter = resp.getWriter();
-        printWriter.write("Hello_world!");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter writer = response.getWriter();
+        try {
+            writer.println("<h2>Welcome to servlets</h2>");
+        } finally {
+            writer.close();
+        }
     }
 }
